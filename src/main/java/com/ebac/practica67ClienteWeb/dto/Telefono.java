@@ -14,4 +14,5 @@ public class Telefono {
     private String tipo;
     private int lada;
     private String numero;
+    private Usuario usuario;
 }

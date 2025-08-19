@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base :: common_header (~{::title})">
+    <title>info Usuario</title>
 </head>
 <body>
-$END$
+<div id="wrapper">
+    <nav th:replace="base :: common_navigation_menu"></nav>
+
+</div>
+<div>
+    <h1>Usuario: <span th:text="${usuario.Nombre}"></span> </h1>
+</div>
+<div>
+    <h2>Relacion de telefonos guardados</h2>
+</div>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>idTelefono</th>
+            <th>Tipo Telefono</th>
+            <th>Lada</th>
+            <th>Numero</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="telefono : ${usuario.telefonos}">
+                <td th:text="${telefono.idTelefono}"></td>
+                <td th:text="${telefono.tipo}"></td>
+                <td th:text="${telefono.lada}"></td>
+                <td th:text="${telefono.numero}"></td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 </body>
 </html>

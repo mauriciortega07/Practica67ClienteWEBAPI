@@ -20,6 +20,11 @@ public class ConvertidorJsonAResponseWrapper<T> {
         try {
             ResponseWrapper<T> usuarioWrapper = objectMapper.readValue(respuesta, typeReference);
             log.info(usuarioWrapper.getMessage());
+
+            if(usuarioWrapper.getResponseEntity() == null){
+                return Optional.empty();
+            }
+
             T usuarioContent = usuarioWrapper.getResponseEntity().getBody();
             return Optional.ofNullable(usuarioContent);
         } catch (JsonProcessingException e){

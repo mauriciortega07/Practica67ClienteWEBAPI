@@ -18,4 +18,20 @@ public class Usuario {
     private String nombre;
     private int edad;
     private List<Telefono> telefonos = new ArrayList<>();
+
+    public static Usuario crearUsuarioVacio(){
+        Telefono telefono = Telefono.builder()
+                .numero("")
+                .lada(0)
+                .tipo("")
+                .build();
+
+        return  Usuario.builder()
+                .idUsuario(0)
+                .nombre("")
+                .edad(0)
+                .telefonos(List.of(telefono))
+                .build();
+
+    }
 }

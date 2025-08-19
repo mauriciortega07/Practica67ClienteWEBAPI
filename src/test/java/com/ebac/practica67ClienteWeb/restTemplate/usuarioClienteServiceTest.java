@@ -17,13 +17,13 @@ import java.util.Optional;
 class usuarioClienteServiceTest {
 
     @Autowired
-    private  usuarioCliente usuarioCliente;
+    private UsuarioCliente usuarioCliente;
 
     @Autowired
-    private  ObjectMapper objectMapper = new ObjectMapper();
+    private  ObjectMapper objectMapper;
 
     @Autowired
-    private  usuarioClienteService usuarioClienteService;
+    private UsuarioClienteService usuarioClienteService;
 
     @Autowired
     private ConvertidorJsonAResponseWrapper convertidorJsonAResponseWrapper;
@@ -54,7 +54,7 @@ class usuarioClienteServiceTest {
 
     @Test
     void actualizaUsuario(){
-        int idUsuario = 10;
+        int idUsuario = 11;
         Usuario usuario = Usuario.builder()
                 .nombre("Paul McCartney")
                 .edad(19)

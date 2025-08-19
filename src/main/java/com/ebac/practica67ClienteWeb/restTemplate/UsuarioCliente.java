@@ -13,12 +13,12 @@ import org.springframework.web.client.RestTemplate;
 
 @Component
 @Slf4j
-public class usuarioCliente {
+public class UsuarioCliente {
     private RestTemplate restTemplate;
     private String urlApi = "http://localhost:8080/usuarios";
 
     @Autowired
-    public usuarioCliente(RestTemplate restTemplate){
+    public UsuarioCliente(RestTemplate restTemplate){
         this.restTemplate = restTemplate;
     }
 
@@ -27,7 +27,7 @@ public class usuarioCliente {
 
         try {
             ResponseEntity<String> guardarUsuario = restTemplate.exchange(urlApi, HttpMethod.POST, usuarioHttpEntity, String.class);
-            log.info("Registro Realizado");
+            log.info("Registro de Usuario Realizado");
             return guardarUsuario.getBody();
         } catch (HttpClientErrorException | HttpServerErrorException e){
             log.error(e.getMessage());

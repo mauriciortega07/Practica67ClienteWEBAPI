@@ -1,10 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymelead.org/extras/spring-security"
+>
+<head th:fragment="common_header(title)">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title th:replace="${title}"></title>
 </head>
+
+
+
 <body>
-$END$
+<div id="wrapper">
+
+    <!--Barra de Navegacion-->
+    <nav th:fragment="common_navigation_menu" role="navigation">
+        <ul>
+            <li>
+                <a href="#">
+                    <i> Usuario en Sesion:
+                        <span th:text="${session.username}"></span>
+                    </i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="/logout">
+                            <i></i>Cerrar Sesi&oacute;n
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <div>
+            <ul>
+                <li>
+                    <a href="/">
+                        <i></i>
+                        Panel de Control
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/formulario-usuario">
+                        <i></i>
+                        Crear Usuario
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+</div>
+
 </body>
+
+<footer th:fragment="common_footer">
+    <script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/functions-formulario-usuario.js}"></script>
+</footer>
 </html>

@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base :: common_header (~{::title})">
+    <title>Panel de Control</title>
 </head>
+
 <body>
-$END$
+
+<div id="wrapper">
+    <nav th:replace="base :: common_navigation_menu"></nav>
+
+</div>
+
+<div>
+    <div>Usuarios Regsitrados:
+        <span th:text="${numUsuario}"></span>
+    </div>
+
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>id de Usuario</th>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Telefono Registrado</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="usuario : ${usuarios}">
+                <td th:text="${usuario.idUsuario}"></td>
+                <td th:text="${usuario.nombre}"></td>
+                <td th:text="${usuario.edad}"></td>
+                <td th:text="${#lists.size (usuario.telefonos)}"></td>
+
+                <td><a th:href="@{/usuario(idUsuario = ${usuario.idUsuario})}">Ver info</a></td>
+
+                <td><a th:href="@{/formulario-usuario(idUsuario = ${usuario.idUsuario})}">Actualizar</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
 </body>
 </html>
